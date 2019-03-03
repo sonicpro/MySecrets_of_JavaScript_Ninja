@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Listing 7.5 from the 1st Ed.</title>
+    <meta charset="utf-8" />
+    <script src="../shared/assert.js"></script>
+    <!-- <script src="../shared/htmlEscape.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="../styles/assert.css" />
+  </head>
+  <body>
+    <p></p>
+    <ul id="info"></ul>
+    <script type="text/javascript">
+      var html = "<div class='test'><b>Hello</b> <i>world!</i></div>";
+      var p = document.getElementsByTagName("p")[0];
+      p.innerText= html;
+      
+      // Matching only a first tag using a local regex.
+      // var results = html.match(/<(\/?)(\w+)([^>]*?)>/);
+      /*
+      assert(results[0] == "<div class='test'>", "The entire match.");
+      assert(results[1] == "", "The (missing) slash.");
+      assert(results[2] == "div", "The tag name.");
+      assert(results[3] == " class='test'", "The attributes.");
+      */
+
+      // Matching the same regex as above, but as a global.
+      var all = html.match(/<(\/?)(\w+)([^>]*?)>/g);
+      assert(all[0] == "<div class='test'>", "Opening div tag");
+      assert(all[1] == "<b>", "Opening b tag");
+      assert(all[2] == "</b>", "Closing b tag");
+      assert(all[3] == "<i>", "Opening i tag");
+      assert(all[4] == "</i>", "Closing i tag");
+      assert(all[5] == "</div>", "Closing div tag");
+    </script>
+  </body>
+</html>

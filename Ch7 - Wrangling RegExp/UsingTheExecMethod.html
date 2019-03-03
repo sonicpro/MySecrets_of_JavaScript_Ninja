@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Listing 7.6 from the 1st Ed.</title>
+    <meta charset="utf-8" />
+    <script src="../shared/assert.js"></script>
+    <link rel="stylesheet" type="text/css" href="../styles/assert.css" />
+  </head>
+  <body>
+    <p>Revisiting Listing 7.5 using both global RegExp and also nexting it through the matched string.</p>
+    <p></p>
+    <ul id="info"></ul>
+    <script type="text/javascript">
+      var html = "<div class='test'><b>Hello</b> <i>world!</i></div>";
+      var p = document.getElementsByTagName("p")[1];
+      p.innerText= html;
+      
+      // The global RegExp with three capturing groups.
+      var tag = /<(\/?)(\w+)([^>]*?)>/g, match;
+      var num = 0;
+
+      while ((match = tag.exec(html)) !== null) {
+        assert(match.length === 4, "Every match contains an entire tag and three captures.");
+        num++;
+      }
+
+      assert(num === 6, "Three opening and three closing tags are found");
+    </script>
+  </body>
+</html>
