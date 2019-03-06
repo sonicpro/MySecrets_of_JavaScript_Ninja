@@ -33,9 +33,9 @@
       assert(match[2] == "", "The tag attributes.");
       assert(match[3] == "world!", "The contents of the tag.");
 
-      var camelCase = "fastForward";
+      var camelCase = "borderBottomWidth";
       paragraphs[2].innerHTML = camelCase;
-      assert(camelCase.replace(/([A-Z])/g, "-$1").toLowerCase() == "fast-forward", "Converting the camelCase into dashed notation.");
+      assert(camelCase.replace(/([A-Z])/g, "-$1").toLowerCase() == "border-bottom-width", "Converting the camelCase into dashed notation.");
     </script>
   </body>
 </html>

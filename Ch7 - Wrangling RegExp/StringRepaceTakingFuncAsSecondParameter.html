@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Listing 7.8 from the 1st Ed.</title>
+    <meta charset="utf-8" />
+    <script src="../shared/assert.js"></script>
+    <link rel="stylesheet" type="text/css" href="../styles/assert.css" />
+  </head>
+  <body>
+    <p>The task is the opposite to the one solved in the Listing 7.7. Now we convert from the dashed notation to camelCase.</p>
+    <p></p>
+    <ul id="info"></ul>
+    <script type="text/javascript">
+      var cssProperty = "border-bottom-width";
+      var paragraphs = document.getElementsByTagName("p");
+      paragraphs[1].innerHTML = cssProperty;
+
+      // The global RegExp that matches the character prepended with a hiphen, capturing the character.
+      var startingWordCharPattern = /-(\w)/g, match;
+
+      function upper(wholeMatch, capture) {
+        return capture.toUpperCase();
+      }
+      
+      assert(cssProperty.replace(startingWordCharPattern, upper) == "borderBottomWidth", "Camel cased a hyphenated string.");
+    </script>
+  </body>
+</html>
